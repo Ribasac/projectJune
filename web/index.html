@@ -1,0 +1,78 @@
+<html>
+<header>
+<link rel="stylesheet" href="style.css">
+<script type="text/javascript" src="eel.js"/>
+<script type="text/javascript" src="script.js"></script>
+<script>
+
+eel.expose(textEdit);
+
+
+function textEdit(divData)
+{
+dataDiv=document.getElementsByClassName("text_span");
+dataDiv[0].innerHTML = divData;
+}
+</script>
+
+
+</header>
+<body>
+<div class="topContainer">
+
+<div class="currentDate"></div>
+
+<div class="person"><div><img src="person.jpg"/></div><div class="personName">Ribas Chukkan</div></div>
+</div>
+<div class="bottomContainer">
+
+<img src="asstcircle.gif" class="assist_img" id="assist_img" onclick="eel.juneTrigger()"/>
+
+<div class="text_data"><span class="text_span">Hi, Say my name and I will be there for you</span><span class="textLine">|</span></div>
+<!--<span class="micIcon" onclick="eel.juneTrigger()"><img src="Images/mic.png"/></span>-->
+<ul class="SuggestedCommand">
+
+<li><img src="weather.png"/>What's the weather now?</li>
+<li><img src="math.png"/>Do a math</li>
+
+<li><img src="money.png"/>This month's total expenses</li>
+<li><img src="clock.png"/>What's the time?</li>
+
+</ul>
+</div>
+</body>
+
+<script>
+
+
+setInterval(function dateNow()
+{
+var currentdate = new Date(); 
+var datetime = currentdate.getDate() + "th "
+                + (currentdate.getMonth()+1)  + " " 
+                + currentdate.getFullYear() + " | "  
+                + currentdate.getHours() + ":"  
+                + currentdate.getMinutes() + ":" 
+                + currentdate.getSeconds();
+dateClass=document.getElementsByClassName("currentDate");
+datetime = datetime.replace(" 1 "," January ");
+datetime = datetime.replace(" 2 "," February ");
+datetime = datetime.replace(" 3 "," March ");
+datetime = datetime.replace(" 4 "," April ");
+datetime = datetime.replace(" 5 "," May ");
+datetime = datetime.replace(" 6 "," June ");
+datetime = datetime.replace(" 7 "," July ");
+datetime = datetime.replace(" 8 "," August ");
+datetime = datetime.replace(" 9 "," September ");
+datetime = datetime.replace(" 10 "," October ");
+datetime = datetime.replace(" 11 "," November ");
+datetime = datetime.replace(" 12 "," December ");
+dateClass[0].innerHTML = datetime;
+}, 1000);
+
+
+
+
+</script>
+
+</html>

@@ -1,0 +1,29 @@
+import eel
+import speech_recognition as sr
+import time
+import threading
+def callback(recognizer, audio):
+    try:
+        print(recognizer.recognize_google(audio))
+    except:
+        print("Oops! Didn't catch that")
+
+def listen_thread():
+    print("Start talking")
+    r = sr.Recognizer()
+    
+    mic = sr.Microphone()
+    r.listen_in_background(mic, callback)
+
+def app_window():
+    eel.init("web")
+    eel.start("index.html", size=(1600,768), position=(50,50))
+
+listen_threading = threading.Thread(target=listen_thread())
+app_thread = threading.Thread(target=app_window())
+
+listen_threading.start()
+app_thread.start()
+
+while True:
+    time.sleep(0.1)

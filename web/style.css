@@ -1,0 +1,203 @@
+@font-face {
+font-family: 'Product Sans';
+font-style: normal;
+font-weight: 400;
+src: local('Open Sans'), local('OpenSans'), url(https://fonts.gstatic.com/s/productsans/v5/HYvgU2fE2nRJvZ5JFAumwegdm0LZdjqr5-oayXSOefg.woff2) format('woff2');
+}
+
+@keyframes imgRotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
+
+
+@keyframes tline
+{
+    from { opacity: 0; }
+    to { opacity: 1;}
+
+}
+
+@keyframes rising
+{
+    from { bottom: -70px; }
+    to { bottom: 0;}
+
+}
+
+
+body{
+    background:#f1f1f1;
+    height:400px;
+    font-family:Product Sans;
+    color:#555;
+    letter-spacing: .15em;
+    animation:tline 2s;
+    animation-timing-function: linear;
+    -webkit-animation-timing-function: linear;
+    margin:0;
+}
+
+.topContainer{
+
+position:fixed;
+top:15px;
+width:100%;
+margin:0;
+padding:0;
+
+}
+
+.currentDate{
+
+font-size:11.5px;
+position:absolute;
+left:20px;
+top:5px;
+
+
+}
+
+.person{
+
+position:absolute;
+float:right;
+right:40px;
+top:0px;
+font-size:13px;
+
+}
+
+.person div{ 
+
+display:inline;
+
+}
+
+.person img{
+
+height:30px;
+margin:0 15px;
+border-radius:50%;
+
+
+}
+.personName{
+
+position:relative;
+bottom:7.5px;
+
+}
+
+
+.bottomContainer{
+
+position:fixed;
+bottom:0px;
+width:100%;
+margin:0;
+padding:0;
+
+}
+
+
+
+.text_data{
+position:relative;
+bottom:0px;
+font-family:Product Sans;
+letter-spacing: .15em;
+text-align:center;
+width:90%;
+padding:5%;
+}
+
+.textLine{
+padding-left:10px;
+animation:tline 0.5s;
+animation-iteration-count: infinite;
+animation-direction:alternate;
+animation-timing-function: linear;
+}
+
+
+.assist_img{
+height:120px;
+width:160px;
+position:relative;
+bottom:-50px;
+left:50%;
+margin:auto;
+margin-left:-80px;
+filter: saturate(40%);
+animation:imgRotate 1s;
+animation-iteration-count: infinite;
+animation-play-state: paused;
+}
+
+
+
+.SuggestedCommand
+{
+width:90%;
+padding:20px 5% 20px 5%;
+background:#fff;
+list-style:none;
+display:inline-block;
+align:center;
+margin:auto;
+position:relative;
+bottom:0;
+text-align:center;
+box-shadow: 0px -5px 8px #eee;
+
+}
+
+.SuggestedCommand li{
+display:inline-block;
+text-align:center;
+padding:10px 30px;
+margin:10px 10px;
+border-radius:20px;
+border:black 1px;
+box-shadow: 0px 3px 6px #ddd;
+background:#fff;
+font-size:13px;
+-webkit-touch-callout: none;
+-webkit-user-select: none;
+-khtml-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+user-select: none;
+
+}
+
+.SuggestedCommand li:hover{
+
+background:#263864;
+color:#fff;
+
+
+}
+
+.SuggestedCommand li img{
+width:20px;
+height:20px;
+margin:0 6px -5px 0;
+padding:0;
+}
+
+
+.micIcon img{
+    margin:10px;
+    margin-bottom:-15px;
+    height:25px;
+    padding:10px;
+    border-radius:50%;
+    box-shadow: 0px 3px 6px #aaa;
+
+    }
