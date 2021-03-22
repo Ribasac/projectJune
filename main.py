@@ -39,6 +39,7 @@ def listenAudio():
             audio = r.listen(source)
             audioData = r.recognize_google(audio)
             eel.textEdit(audioData)
+            print(audioData)
             speakData = task.doTask(audioData)
             editAndSpeak(speakData)
         except:
