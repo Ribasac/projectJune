@@ -1,23 +1,54 @@
-import pyrebase
+import  mysql.connector as con
+from junepackages import askTo as a
+from junepackages import speak as s
+import time
 
-firebaseConfig = {'apiKey': "AIzaSyBMUlXffmgsJlB2hnEBjXx5l88WgY4Pm2A",
-  'authDomain': "projectjune-c542f.firebaseapp.com",
-  'databaseURL': "https://projectjune-c542f-default-rtdb.firebaseio.com/",
-  'projectId': "projectjune-c542f",
-  'storageBucket': "projectjune-c542f.appspot.com",
-  'messagingSenderId': "1027810386540",
-  'appId': "1:1027810386540:web:3d9efec9ceaa883586ae49",
-  'measurementId': "G-V0Q5VL9YWS"
-}
+mydb = con.connect(
+    host = "localhost",
+    username = "root",
+    password = "june"
+    )
 
-firebase = pyrebase.initialize_app(firebaseConfig)
-auth = firebase.auth()
+usrFile = open("info.txt", "rt");
+usrFileCheck = True
+usrInfo = usrFile.read().split("#")
+usrname = usrInfo[0]
+passwd = usrInfo[1]
+print(passwd)
 
-def signup():
-    email = input("Enter your email: ")
-    password = input("Enter your password: ")
-    auth.create_user_with_email_and_password(email, password)
 
-signup()
 
+
+def login():
+    if usrFileCheck :
+        usr = askPass()
+    else :
+        usr = register()
+    return usr
+
+def register():
+    s.speak("You have not registered yet. Register to continue.")
+    print("........")
+    time.sleep(5)
+    usrname = a.askTo("What is the username?")
+    passwd = a.askTo("What is the password?")
+    userData = usrname + passwd
+    ufw = open("info.txt", "w");
+    ufw.write(userData)
+    return usrname
+
+def askPass():
+    s.speak("login to continue.")
+    while True:
+        passkey = a.askTo("Please say the password")
+        passkey = passkey.replace("L","l").replace("M","m").replace(" ","")
+        print(passkey)
+        if (passkey == passwd):
+            s.speak("starting")
+            break
+        s.speak("Wrong password. Try again")
+    return usrname
+
+login()
+    
 

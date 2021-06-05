@@ -31,10 +31,8 @@ def juneTrigger():
 
 def listenAudio():
     with sr.Microphone() as source:
-        r.adjust_for_ambient_noise(source)
+        #r.adjust_for_ambient_noise(source)
         juneTriggered()
-        #print("Speak:")
-        #editAndSpeak("speak:")
         try:
             audio = r.listen(source)
             audioData = r.recognize_google(audio)
