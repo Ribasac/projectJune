@@ -8,8 +8,13 @@ import playsound as p
 from junepackages import speak as s
 from junepackages import task
 from junepackages import junehotword as june
+from junepackages import user
+
 
 eel.init("web")
+
+username = user.login()
+print(username)
 
 def callback(r, audio):
     try:
@@ -55,6 +60,7 @@ def editAndSpeak(speakData):
 def listen_thread(r, mic):
     print("Start talking")
     stop_lisentening = r.listen_in_background(mic, callback)
+    eel.userSet(username)
 
 def app_window():
     eel.init("web")

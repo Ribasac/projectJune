@@ -21,18 +21,18 @@ function userSet(divData)
 dataDiv=document.getElementsByClassName("personName");
 dataDiv[0].innerHTML = divData;
 }
-function closeContact()
-{
-    document.getElementById("contactContainer").style.visibility = "hidden";
-    }
 
 
 
 </script>
+<style>
 
+
+</style>
 
 </header>
 <body>
+
 <div class="topContainer">
 
 <div class="currentDate"></div>
@@ -54,17 +54,6 @@ function closeContact()
 <li><img src="clock.png"/>What's the time?</li>
 
 </ul>
-</div>
-<div id="contactContainer">
-<button id="closeBttn" onclick="closeContact()">X</button>
-<div id="contactForm">
-<h4>Add Contact</h4>
-<input type="text" placeholder="Contact Name">
-<input type="text" placeholder="Phone Number">
-<input type="text" placeholder="Email">
-<button>Add</button>
-
-</div>
 </div>
 </body>
 
