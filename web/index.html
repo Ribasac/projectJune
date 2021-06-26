@@ -24,9 +24,29 @@ dataDiv[0].innerHTML = divData;
 function closeContact()
 {
     document.getElementById("contactContainer").style.visibility = "hidden";
-    }
+}
 
+eel.expose(openContact);
+function openContact()
+{
+    document.getElementById("contactContainer").style.visibility = "visible";
+}
 
+function fetchContact()
+{
+    cName = document.getElementById("cName").value;
+    cNumber = document.getElementById("cNumber").value;
+    cEmail = document.getElementById("cEmail").value;
+    eel.sendContact(cName,cNumber,cEmail);
+    document.getElementById("contactForm").reset();
+
+}
+
+eel.expose(pyAlert);
+function pyAlert(aData)
+{
+    window.alert(aData);
+}
 
 </script>
 
@@ -57,14 +77,14 @@ function closeContact()
 </div>
 <div id="contactContainer">
 <button id="closeBttn" onclick="closeContact()">X</button>
-<div id="contactForm">
+<form id="contactForm">
 <h4>Add Contact</h4>
-<input type="text" placeholder="Contact Name">
-<input type="text" placeholder="Phone Number">
-<input type="text" placeholder="Email">
-<button>Add</button>
+<input type="text" placeholder="Contact Name" id="cName">
+<input type="text" placeholder="Phone Number" id="cNumber">
+<input type="text" placeholder="Email" id="cEmail">
+<button type="button" onclick="fetchContact()">Add</button>
 
-</div>
+</form>
 </div>
 </body>
 

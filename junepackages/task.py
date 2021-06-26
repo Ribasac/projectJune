@@ -1,7 +1,8 @@
 import math
 import wikipedia
 from junepackages import speak as s
-from tasks import appOpen, joke
+from tasks import appOpen, joke, message
+import eel
 
 
 def calculate(audioData):
@@ -20,6 +21,7 @@ def whoIs(audioData):
     return result
 
 def doTask(audioData):
+    audioData =  audioData.lower()
     if any(i in audioData for i in ("calculate","Calculate")):
         result = calculate(audioData)
         
@@ -31,5 +33,13 @@ def doTask(audioData):
 
     elif any(i in audioData for i in ("joke","Joke")):
         result = joke.getJoke()
+
+    elif any(i in audioData for i in ("add contact","add contacts")):
+        eel.openContact()
+        result = "Starting...."
+
+    elif any(i in audioData for i in ("send message","message","send whatsapp")):
+        message.sendWhatsapp()
+        result = "Ok...."
   
     return result

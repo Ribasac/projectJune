@@ -8,13 +8,14 @@ import playsound as p
 from junepackages import speak as s
 from junepackages import task
 from junepackages import junehotword as june
-from junepackages import user
+from junepackages import user, contacts
 
 
 eel.init("web")
 
-username = user.login()
-print(username)
+username = "Ribas"
+#username = user.login()
+#print(username)
 
 def callback(r, audio):
     try:
@@ -55,6 +56,10 @@ def editAndSpeak(speakData):
     eel.textEdit(speakData)
     s.speak(speakData)
 
+@eel.expose
+def sendContact(cName,cNumber,cEmail):
+    result = contacts.addContact(cName,cNumber,cEmail)
+    eel.pyAlert(result)
 
 @eel.expose
 def listen_thread(r, mic):
