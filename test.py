@@ -1,7 +1,6 @@
-from selenium import webdriver
+from pygame import mixer
 
-cD = webdriver.Chrome()
+mixer.init()
+mixer.music.load("trigger.mp3")
 
-rNumber = "+918848219624"
-
-cD.get("https://web.whatsapp.com/send/?phone="+rNumber)
+mixer.music.play()

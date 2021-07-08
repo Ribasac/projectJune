@@ -24,6 +24,7 @@ dataDiv[0].innerHTML = divData;
 function closeContact()
 {
     document.getElementById("contactContainer").style.visibility = "hidden";
+    document.getElementById("emailContainer").style.visibility = "hidden";
 }
 
 eel.expose(openContact);
@@ -40,6 +41,18 @@ function fetchContact()
     eel.sendContact(cName,cNumber,cEmail);
     document.getElementById("contactForm").reset();
 
+}
+eel.expose(openEmail);
+function openEmail()
+{
+    document.getElementById("emailContainer").style.visibility = "visible";
+}
+function fetchEmail()
+{
+    eEmail = document.getElementById("eEmail").value;
+    ePassword = document.getElementById("ePassword").value;
+    eel.registerEmail(eEmail, ePassword);
+    document.getElementById("emailContainer").style.visibility = "hidden";
 }
 
 eel.expose(pyAlert);
@@ -83,6 +96,16 @@ function pyAlert(aData)
 <input type="text" placeholder="Phone Number" id="cNumber">
 <input type="text" placeholder="Email" id="cEmail">
 <button type="button" onclick="fetchContact()">Add</button>
+
+</form>
+</div>
+<div class="hc" id="emailContainer">
+<button id="closeBttn" onclick="closeContact()">X</button>
+<form id="contactForm">
+<h4>Add Contact</h4>
+<input type="text" placeholder="Email" id="eEmail">
+<input type="password" placeholder="Password" id="ePassword">
+<button type="button" onclick="fetchEmail()">Add</button>
 
 </form>
 </div>

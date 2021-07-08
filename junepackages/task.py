@@ -20,26 +20,33 @@ def whoIs(audioData):
     result = wikipedia.summary(titleData, sentences = 1)
     return result
 
-def doTask(audioData):
+def doTask(audioData, user):
     audioData =  audioData.lower()
-    if any(i in audioData for i in ("calculate","Calculate")):
-        result = calculate(audioData)
-        
-    elif any(i in audioData for i in ("who","who is","Who","Who is")):
-        result = whoIs(audioData)
 
-    elif any(i in audioData for i in ("open", "Open")):
-        result = appOpen.open(audioData)
-
-    elif any(i in audioData for i in ("joke","Joke")):
-        result = joke.getJoke()
-
-    elif any(i in audioData for i in ("add contact","add contacts")):
+    if any(i in audioData for i in ("add contact","add contacts")):
         eel.openContact()
         result = "Starting...."
+    elif any(i in audioData for i in ("register email","add email")):
+        eel.openEmail()
+        result = "Starting...."
 
-    elif any(i in audioData for i in ("send message","message","send whatsapp")):
-        message.sendWhatsapp()
-        result = "Ok...."
-  
+    elif user!="helper":
+        if any(i in audioData for i in ("calculate","Calculate")):
+            result = calculate(audioData)
+        
+        elif any(i in audioData for i in ("who","who is","Who","Who is")):
+            result = whoIs(audioData)
+
+        elif any(i in audioData for i in ("open", "Open")):
+            result = appOpen.open(audioData)
+
+        elif any(i in audioData for i in ("joke","Joke")):
+            result = joke.getJoke()
+
+        elif any(i in audioData for i in ("send message","message","send whatsapp")):
+            message.sendWhatsapp()
+            result = "Ok...."
+        elif any(i in audioData for i in ("send email","an email","send an email")):
+            result = message.sendEmail()
+            
     return result

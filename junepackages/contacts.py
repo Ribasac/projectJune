@@ -41,4 +41,16 @@ def fetchNumber(audioData):
     except:
         s.speak("Cannot find the contact")
 
+def fetchEmail(audioData):
+    try:
+        con = sq.connect("contacts.db")
+        iSql = "select email from contacts where name='"+audioData+"';"
+        cursor = con.execute(iSql)
+        for row in cursor:
+            result = row[0]
+        con.close()
+        return result
+    except:
+        s.speak("Cannot find the contact")
+
 

@@ -9,13 +9,17 @@ from junepackages import speak as s
 from junepackages import task
 from junepackages import junehotword as june
 from junepackages import user, contacts
+from pygame import mixer
 
 
 eel.init("web")
 
 username = "Ribas"
 #username = user.login()
-#print(username)
+print(username)
+mixer.init()
+mixer.music.load("trigger.mp3")
+
 
 def callback(r, audio):
     try:
@@ -28,7 +32,8 @@ def callback(r, audio):
 
 def juneTriggered():
     eel.textEdit("Listening...")
-    p.playsound("trigger.mp3")
+    #p.playsound("trigger.mp3")
+    mixer.music.play()
     print("Triggered")
 
 @eel.expose
@@ -44,7 +49,7 @@ def listenAudio():
             audioData = r.recognize_google(audio)
             eel.textEdit(audioData)
             print(audioData)
-            speakData = task.doTask(audioData)
+            speakData = task.doTask(audioData, username)
             editAndSpeak(speakData)
         except:
             print("Sorry I did not catch it")
@@ -59,6 +64,11 @@ def editAndSpeak(speakData):
 @eel.expose
 def sendContact(cName,cNumber,cEmail):
     result = contacts.addContact(cName,cNumber,cEmail)
+    eel.pyAlert(result)
+
+@eel.expose
+def sendEmail(eEmail,ePassword):
+    result = email.addEmail(eEmail,ePassword)
     eel.pyAlert(result)
 
 @eel.expose
