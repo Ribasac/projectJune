@@ -1,7 +1,7 @@
 import math
 import wikipedia
 from junepackages import speak as s
-from tasks import appOpen, joke, message
+from tasks import appOpen, joke, message, playM, notes
 import eel
 
 
@@ -16,10 +16,11 @@ def calculate(audioData):
     return result
 
 def whoIs(audioData):
-    titleData = audioData.replace("who is ","").replace("Who is ","").replace("who ","").replace("Who ","")
+    titleData = audioData.replace("who is ","").replace("Who is ","").replace("who ","").replace("Who ","").replace("what is","").replace("where is","")
     result = wikipedia.summary(titleData, sentences = 1)
     return result
 
+@eel.expose
 def doTask(audioData, user):
     audioData =  audioData.lower()
 
@@ -34,7 +35,7 @@ def doTask(audioData, user):
         if any(i in audioData for i in ("calculate","Calculate")):
             result = calculate(audioData)
         
-        elif any(i in audioData for i in ("who","who is","Who","Who is")):
+        elif any(i in audioData for i in ("who","who is","Who","Who is","where is","what is")):
             result = whoIs(audioData)
 
         elif any(i in audioData for i in ("open", "Open")):
@@ -48,5 +49,11 @@ def doTask(audioData, user):
             result = "Ok...."
         elif any(i in audioData for i in ("send email","an email","send an email")):
             result = message.sendEmail()
+        elif any(i in audioData for i in ("play","Play")):
+            result = playM.playYT(audioData)
+        elif any(i in audioData for i in ("remember","add note","note that","not that")):
+            result = notes.addNote(audioData)
+        elif any(i in audioData for i in ("what did i","where did i")):
+            result = notes.fetchNote(audioData)
             
     return result

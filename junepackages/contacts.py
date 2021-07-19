@@ -52,5 +52,7 @@ def fetchEmail(audioData):
         return result
     except:
         s.speak("Cannot find the contact")
+        return False
+        
 
 

@@ -60,8 +60,9 @@ def sendEmail():
                 try:
                     rName = a.askTo("who do you wanna send the message to?")
                     rEmail = c.fetchEmail(rName)
-                    print(rName)
-                    break
+                    if rEmail != False:
+                        print(rName)
+                        break
                 except:
                     s.speak("Did not get you")
                     continue
@@ -86,8 +87,7 @@ def sendEmail():
         else:
             s.speak("You have not registered your email info. Register to send email.")
             eel.openEmail()
-
-        result = " "
+            result = "Opening contacts form"
 
     except:
 

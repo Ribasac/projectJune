@@ -14,9 +14,10 @@ from pygame import mixer
 
 eel.init("web")
 
-username = "Ribas"
-#username = user.login()
+#username = "Ribas"
+username = user.login()
 print(username)
+triggerFlag=True
 mixer.init()
 mixer.music.load("trigger.mp3")
 
@@ -28,12 +29,15 @@ def callback(r, audio):
             
                 
     except:
+        triggerFlag=True
         pass
 
 def juneTriggered():
+    triggerFlag=False
     eel.textEdit("Listening...")
+    s.speak("Listening...")
     #p.playsound("trigger.mp3")
-    mixer.music.play()
+    #mixer.music.play()
     print("Triggered")
 
 @eel.expose
@@ -50,11 +54,17 @@ def listenAudio():
             eel.textEdit(audioData)
             print(audioData)
             speakData = task.doTask(audioData, username)
-            editAndSpeak(speakData)
+            s.speak(speakData)
+            triggerFlag=True
         except:
             print("Sorry I did not catch it")
-            editAndSpeak("Sorry i did not understand")
+            s.speak("Sorry i did not understand")
+            triggerFlag=True
 
+@eel.expose
+def forceTask(audioData):
+    speakData = task.doTask(audioData, username)
+    s.speak(speakData)
 
 def editAndSpeak(speakData):
     

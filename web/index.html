@@ -27,6 +27,17 @@ function closeContact()
     document.getElementById("emailContainer").style.visibility = "hidden";
 }
 
+function addContactOpen()
+{
+    eel.forceTask("add contact");
+
+}
+function addEmailOpen()
+{
+    eel.forceTask("add email");
+
+}
+
 eel.expose(openContact);
 function openContact()
 {
@@ -80,11 +91,11 @@ function pyAlert(aData)
 <!--<span class="micIcon" onclick="eel.juneTrigger()"><img src="Images/mic.png"/></span>-->
 <ul class="SuggestedCommand">
 
-<li><img src="weather.png"/>What's the weather now?</li>
-<li><img src="math.png"/>Do a math</li>
 
-<li><img src="money.png"/>This month's total expenses</li>
-<li><img src="clock.png"/>What's the time?</li>
+<li onClick="addContactOpen()"><img src="math.png"/>Add contact</li>
+
+<li onClick="addEmailOpen()"><img src="money.png"/>Add email</li>
+
 
 </ul>
 </div>
